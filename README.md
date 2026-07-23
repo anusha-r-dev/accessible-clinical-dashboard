@@ -1,5 +1,7 @@
 # Accessible Clinical Results Dashboard
 
+[View the live dashboard](https://anusha-r-dev.github.io/accessible-clinical-dashboard/)
+
 An accessible clinical results dashboard built with React and TypeScript. The
 application demonstrates how laboratory data can be presented with clear
 status indicators, preserved numeric precision, keyboard-friendly controls,
