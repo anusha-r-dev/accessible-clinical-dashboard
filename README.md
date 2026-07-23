@@ -1,75 +1,104 @@
-# React + TypeScript + Vite
+# Accessible Clinical Results Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[View the live dashboard](https://anusha-r-dev.github.io/accessible-clinical-dashboard/)
 
-Currently, two official plugins are available:
+An accessible clinical results dashboard built with React and TypeScript. The
+application demonstrates how laboratory data can be presented with clear
+status indicators, preserved numeric precision, keyboard-friendly controls,
+and responsive layouts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Preview
 
-## React Compiler
+### Dashboard overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Accessible Clinical Results Dashboard showing the navigation, synthetic patient summary, priority counts, search, filters, and selected result](docs/screenshots/dashboard-overview.png)
 
-## Expanding the ESLint configuration
+### Results and details
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Recent laboratory results table with status indicators, reference ranges, trend information, result history, and review action](docs/screenshots/results-and-details.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+> **Privacy note:** Every person, identifier, result, and clinical detail in
+> this project is entirely synthetic. This project contains no employer code,
+> internal APIs, proprietary components, or real patient information.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Search results by test name, abbreviation, or laboratory panel
+- Filter results by attention status
+- Review abnormal findings with a persistent attention queue
+- Select a result to inspect its value, reference range, trend, and history
+- Explore exact historical values through an interactive keyboard-ready chart
+- Preserve display precision independently from numeric values
+- Communicate status through text and symbols—not color alone
+- Responsive layout for desktop, tablet, and mobile screens
+- Semantic landmarks, headings, table markup, labels, and live result counts
+- Visible keyboard focus states, native controls, and a skip link
+- Reduced-motion support
 
+## Technology
+
+- React 19
+- TypeScript
+- Vite
+- CSS
+- ESLint
+- GitHub Actions
+
+No component library or charting dependency is used. The interface and its
+small trend visualizations are implemented with semantic HTML and CSS.
+
+## Run locally
+
+This project uses Node.js 22.
+
+```bash
+nvm use
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL printed by Vite.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Quality checks
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run lint
+npm run build
 ```
+
+`npm run lint` checks the source with ESLint. `npm run build` performs
+TypeScript project checking and creates an optimized production bundle.
+
+## Project structure
+
+```text
+src/
+├── components/         # Focused, reusable interface components
+├── data/
+│   └── labResults.ts   # Synthetic results and display labels
+├── hooks/
+│   └── useReviewedResults.ts # Persistent review workflow
+├── types/
+│   └── clinical.ts     # Shared TypeScript domain types
+├── App.tsx             # Application state and component composition
+├── App.css             # Responsive component and layout styles
+├── index.css           # Global defaults and reduced-motion behavior
+└── main.tsx            # React application entry point
+```
+
+## Accessibility decisions
+
+- A skip link lets keyboard users bypass repeated navigation.
+- Native links, buttons, inputs, tables, headings, and definition lists retain
+  built-in browser and assistive-technology behavior.
+- Filter buttons expose their state with `aria-pressed`.
+- Search-result counts are announced through a polite live region.
+- Table row headers identify each result.
+- Status text accompanies every status color.
+- Decorative elements are hidden from assistive technology.
+- Focus indicators meet the interface's visual contrast requirements.
+
+## Disclaimer
+
+This dashboard is an educational portfolio project and is not intended for
+clinical use or medical decision-making.
