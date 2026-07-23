@@ -7,6 +7,16 @@ application demonstrates how laboratory data can be presented with clear
 status indicators, preserved numeric precision, keyboard-friendly controls,
 and responsive layouts.
 
+## Preview
+
+### Dashboard overview
+
+![Accessible Clinical Results Dashboard showing the navigation, synthetic patient summary, priority counts, search, filters, and selected result](docs/screenshots/dashboard-overview.png)
+
+### Results and details
+
+![Recent laboratory results table with status indicators, reference ranges, trend information, result history, and review action](docs/screenshots/results-and-details.png)
+
 > **Privacy note:** Every person, identifier, result, and clinical detail in
 > this project is entirely synthetic. This project contains no employer code,
 > internal APIs, proprietary components, or real patient information.
